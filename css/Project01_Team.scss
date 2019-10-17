@@ -1,0 +1,71 @@
+#teamBanner {
+    font-size: 3em;
+    margin-top: 30px;
+}
+
+#teamSection {
+    width: 100%;
+
+    .teamMember {
+        width: 70%;
+
+        img {
+            width: 55%;
+            height: 300px;
+            margin: 20px;
+        }
+    }
+
+}
+
+#teamSlider {
+    display: flex;
+    width: 100%;
+
+    img {
+        width: 170px;
+        height: 145px;
+        margin: 5px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+
+
+p {
+        color: black;
+        font-size: 118%;
+        margin: 4%;
+}
+
+footer {
+    font-size: 1.17em;
+    text-align: center;
+
+    .sliderDiv {
+        margin-right: 10px;
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    #teamSection .teamMember img {
+        width: 55%;
+        height: 200px;
+        margin: 20px;
+}
+
+#teamSlider {
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+footer {
+    height: auto;
+    .sliderDiv {
+        margin-right: 0;
+        width: 45%;
+    }
+}
+
+}

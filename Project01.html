@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="./js/Project01.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/Project.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header id="topHead">
+        <img id="mediaswitch" src="./img/Project01-logo.png" alt="">
+        <nav>
+            <ul>
+                <li><a href="#">Navigation</a>
+                    <ul>
+                        <li><a href="Project01.html">Home</a></li>
+                        <li><a href="#">Team</a>
+                            <ul>
+                                <li><a href="Steven.html">Steven</a></li>
+                                <li><a href="Sebi.html">Sebastian</a></li>
+                                <li><a href="Markus.html">Markus</a></li>
+                                <li><a href="Consuelo.html">Consuelo</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Games</a>
+                            <ul>
+                                <li><a href="Game_memory.html">Memory</a></li>
+                                <li><a href="Quiz/Quiz.html">The Impossible Quiz</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">More From Us</a>
+                            <ul>
+                                <li><a href="Newspaper.html">News Article</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="heroImage">
+            <div class="slider-holder">
+                <span id="slider-image-1"></span>
+                <span id="slider-image-2"></span>
+                <span id="slider-image-3"></span>
+                <div class="image-holder">
+                    <img id="s_image" src="img/black-hole-banner.jpg" class="slider-image" />
+                    <img id="s_image" src="img/milky-way-banner.jpg" class="slider-image" />
+                    <img id="s_image" src="img/planet-banner.jpg" class="slider-image" />
+                </div>
+                <a class="prev" onclick="previousPhoto()">&#10094;</a>
+                <a class="next" onclick="nextPhoto()">&#10095;</a>
+            </div>
+        </div>
+
+        <h2 id="teamBanner">Our Team</h2>
+        <div id="teamSection">
+            <input type="button" id="remove" value="Remove Team Member">
+        </div>
+        <div id="join">
+            <p id="joinBtn">Join The Team!</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="dropup">
+            <h2 class="dropbtn">DropUp Button</h2>
+            <div class="dropup-content">
+                <img src="./img/Steven.jpg" alt="">
+            </div>
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

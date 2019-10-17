@@ -1,0 +1,101 @@
+.memoryContainer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 2%;
+	border: 2px solid black;
+
+	.memoryFlexBox{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	 	padding: 2% 2% 2% 2%;
+		width: 90%;
+		height: 700px;
+		background: #544e4e30;
+		border-radius: 3%;
+		border: 2px solid gray;
+		visibility: hidden;
+
+		div[class^=memoryCard]{
+            width: 21%;
+            height: 19%;
+	    	background-size: cover;
+            background-size: 1.4cm;
+            padding: 0px;
+			
+		}
+		
+
+}
+
+
+
+}
+
+#sartMemoryBtn{
+    margin-top: -1;
+}
+
+#cardAmountSelector{
+
+    width: 15%;
+    font-size: 130%;
+    align-self: flex-end;
+    margin-bottom: -3%;
+    margin-right: 7%;
+    padding-bottom: 2px;
+    border: none;
+    border-radius: 4px;
+    border-bottom: 1px solid black;
+}
+#cardAmountSelector:focus{
+    background-color: #dcd7d785;
+}
+#cardAmountSelector:hover{
+    opacity: 0.7;
+}
+
+    input[type=number] {
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    padding: 0 8px;
+}
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    cursor:pointer;
+    display:block;
+    width:8px;
+    color: #333;
+    text-align:center;
+    position:relative;
+}
+
+input[type=number]:hover::-webkit-inner-spin-button { 
+    background: #eee url("../img/memory/numberinput.png") no-repeat 50% 50%;  
+    width: 14px;
+    height: 14px;
+    padding: 4px;
+    position: relative;
+    right: 4px;
+    border-radius: 28px;
+    width: 14px;
+    height: 14px;
+    padding: 4px;
+    position: relative;
+    right: 4px;
+    border-radius: 28px;
+}
+
+// input[type="number"] {
+//     -webkit-appearance: textfield;
+//        -moz-appearance: textfield;
+//             appearance: textfield;
+//   }
+//   input[type=number]::-webkit-inner-spin-button, 
+//   input[type=number]::-webkit-outer-spin-button { 
+//     -webkit-appearance: none;
+//   }

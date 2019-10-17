@@ -1,0 +1,121 @@
+#news {
+    background-image: url("../img/np-background.jpg");
+    ;
+}
+
+h1 {
+    text-align: center;
+    font-size: 70px;
+    font-family: Georgia;
+    text-decoration: overline;
+    text-transform: uppercase;
+}
+
+h2 {
+    text-align: center;
+    font-size: 60px;
+    font-family: Times New Roman;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+h3 {
+    margin: 0px 5px;
+}
+
+.date {
+    font-size: 25px;
+    direction: rtl;
+}
+
+#one,
+#two,
+#three,
+#four,
+#five {
+    font-size: 20px;
+}
+
+#teamSlider {
+    display: flex;
+    width: 100%;
+
+    img {
+        width: 170px;
+        height: 145px;
+        margin: 5px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+p {
+    color: black;
+    font-size: 118%;
+    margin: 4%;
+}
+
+#news {
+    margin-bottom: 30px;
+    font-family: georgia;
+    line-height: 1.61;
+    font-size: 15px;
+    color: #3B3C49;
+}
+
+button {
+    margin-bottom: 50px;
+    margin-left: 50px;
+    color: black;
+    font-size: 15px;
+    padding: 6px 15px 6px 15px;
+    text-decoration: none;
+    border: 1px solid black;
+    border-radius: 2px;
+    transition: .3s ease-in-out;
+}
+
+button:hover {
+    color: white;
+    background-color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transform: translateX(2px);
+}
+
+#more {
+    display: none;
+}
+
+footer {
+    font-size: 1.17em;
+    text-align: center;
+
+    .sliderDiv {
+        margin-right: 10px;
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:480px) {
+    #teamSection .teamMember img {
+        width: 55%;
+        height: 200px;
+        margin: 20px;
+    }
+
+    #teamSlider {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    footer {
+        height: auto;
+
+        .sliderDiv {
+            margin-right: 0;
+            width: 45%;
+        }
+    }
+
+}

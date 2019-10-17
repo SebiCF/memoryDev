@@ -1,0 +1,105 @@
+.memoryContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 2%;
+  border: 2px solid black;
+}
+
+.memoryContainer .memoryFlexBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 2% 2% 2% 2%;
+  width: 90%;
+  height: 700px;
+  background: #544e4e30;
+  border-radius: 3%;
+  border: 2px solid gray;
+  visibility: hidden;
+}
+
+.memoryContainer .memoryFlexBox div[class^=memoryCard] {
+  width: 21%;
+  height: 19%;
+  background-size: cover;
+  background-size: 1.4cm;
+  padding: 0px;
+}
+
+#sartMemoryBtn {
+  margin-top: -1;
+}
+
+#cardAmountSelector {
+  width: 15%;
+  font-size: 130%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-bottom: -3%;
+  margin-right: 7%;
+  padding-bottom: 2px;
+  border: none;
+  border-radius: 4px;
+  border-bottom: 1px solid black;
+}
+
+#cardAmountSelector:focus {
+  background-color: #dcd7d785;
+}
+
+#cardAmountSelector:hover {
+  opacity: 0.7;
+}
+
+input[type=number] {
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  padding: 0 8px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  cursor: pointer;
+  display: block;
+  width: 8px;
+  color: #333;
+  text-align: center;
+  position: relative;
+}
+
+input[type=number]:hover::-webkit-inner-spin-button {
+  background: #eee url("../img/memory/numberinput.png") no-repeat 50% 50%;
+  width: 14px;
+  height: 14px;
+  padding: 4px;
+  position: relative;
+  right: 4px;
+  border-radius: 28px;
+  width: 14px;
+  height: 14px;
+  padding: 4px;
+  position: relative;
+  right: 4px;
+  border-radius: 28px;
+}
+/*# sourceMappingURL=Game_memory_bigger.css.map */

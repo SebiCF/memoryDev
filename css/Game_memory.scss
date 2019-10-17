@@ -1,0 +1,118 @@
+
+.memoryContainer{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 2%;
+	border: 2px solid black;
+
+	.memoryFlexBox{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+	 	padding: 2% 2% 2% 2%;
+		width: 90%;
+		height: 700px;
+		background: #544e4e30;
+		border-radius: 3%;
+		border: 2px solid gray;
+		visibility: hidden;
+
+		div[class^=memoryCard]{
+			width: 20%;
+			height: 32%;
+			padding-left: 2%;
+			background-color: black;
+			background-image: url(../img/memory/ace_of_spadesWhite.png);
+			background-size: cover;
+			background-size: 2cm;
+			background-repeat: no-repeat;
+			background-position: center;
+			cursor: pointer;
+			border-radius: 10%;
+			transform: rotate3d(1, 1, 1, 360deg);
+			opacity: 0.9;
+			-webkit-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
+			-moz-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
+			-o-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
+			-khtml-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
+			transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
+		}
+		div[class^=memoryCard]:hover{
+			background-size: 2.3cm;
+		}
+
+		div[class=memoryCardCorrect]{
+			cursor: default;
+			-webkit-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
+			-moz-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
+			-o-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
+			-khtml-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
+			transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
+		}
+		div[class=memoryCardCorrect]:hover{
+			background-size: 2cm;
+			border: none;
+		}
+
+}
+
+
+
+}
+#startMemoryBtn {
+	
+	border : solid 0px #ffffff;
+	border-radius : 8px;
+	moz-border-radius : 8px;
+	-webkit-box-shadow : inset 1px 2px 9px rgba(77,67,77,1.0);
+	-moz-box-shadow : inset 1px 2px 9px rgba(77,67,77,1.0);
+	box-shadow : inset 1px 2px 9px rgba(77,67,77,1.0);
+	font-size : 20px;
+	color : #fbfff2;
+	margin-bottom: -2%;
+	padding : 3px 11px;
+	background : #333538;
+	background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333538), color-stop(100%,#7f858a));
+	background : -moz-linear-gradient(top, #333538 0%, #7f858a 100%);
+	background : -webkit-linear-gradient(top, #333538 0%, #7f858a 100%);
+	background : -o-linear-gradient(top, #333538 0%, #7f858a 100%);
+	background : -ms-linear-gradient(top, #333538 0%, #7f858a 100%);
+	background : linear-gradient(top, #333538 0%, #7f858a 100%);
+	filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#333538', endColorstr='#7f858a',GradientType=0 );
+
+}
+
+#startMemoryBtn:hover {
+	opacity: 0.9;
+}
+
+#memoryScore{
+	 
+	font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	border-top: 2px solid gray;
+	border-right: 2px solid gray;
+	border-left: 2px solid gray;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	moz-border-radius : 8px;
+	font-size: 166%;
+	padding: 0.5% 3% 0.5% 3%;
+	background: #544e4e30;
+	align-self: end;
+	margin-left: 7%;
+	color: black;
+	visibility: hidden;
+
+}
+
+#endtext{
+
+	left: 50%;
+	color: green;
+	font-weight: 600;
+	margin-left: 32%;
+	text-shadow: 1px 1px black;
+}

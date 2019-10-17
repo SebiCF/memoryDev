@@ -1,0 +1,132 @@
+let questionlv1 = {"questionsarr": [
+
+    {
+        "question": "Welche Farbe hat diese süße schwarze Katze?",
+        "image": "level1/SchwarzeKatze.jpg",
+        "rightanswer": 4,
+        "answer1": "Regenbogen!!!",
+        "answer2": "Grün",
+        "answer3": "Rot",
+        "answer4": "Schwarz vielleicht?",
+    },
+
+    {
+        "question": "Welches Tier siehst du?",
+        "image": "level1/BekloppterSeehund.jpg",
+        "rightanswer": 1,
+        "answer1": "Nen bekloppten Seehund!",
+        "answer2": "Ein Schaf ganz klar!",
+        "answer3": "Einen Gorilla denk ich?",
+        "answer4": "Ich bin mir sicher einen Elefanten zu sehen!",
+    },
+
+    {
+        "question": "Was ist hier abgebildet?",
+        "image": "level1/Seifenblasen.jpg",
+        "rightanswer": 3,
+        "answer1": "Eine Seifenblase",
+        "answer2": "Eine Wasserstoffbombe",
+        "answer3": "Seifenblasen",
+        "answer4": "Ein Wurmloch",
+    },
+
+    {
+        "question": "Was steht auf dem Zettel?",
+        "image": "level1/ThankYou.jpg",
+        "rightanswer": 4,
+        "answer1": "Ich kann lesen! Da steht 'Hilf dem Opa auf die Oma'",
+        "answer2": "Ich kann lesen! Da steht 'Expecto Patronum!",
+        "answer3": "Ich kann lesen! Da steht 'Sesam öffne dich",
+        "answer4": "Ich kann lesen! Da steht 'Thank You'",
+    },
+
+    {
+        "question": "Was ist auf dem Bild?",
+        "image": "level1/Auto.jpg",
+        "rightanswer": 3,
+        "answer1": "Ein Rasenmäher",
+        "answer2": "Das Geilomobil!",
+        "answer3": "Ein Oldtimer",
+        "answer4": "Keine Ahnung ein Flugzeug?",
+    },
+
+    {
+        "question": "Um welches Obst handelt es sich hier?",
+        "image": "level1/Apfel.jpg",
+        "rightanswer": 2,
+        "answer1": "Eine Birne?",
+        "answer2": "Ähh ein Apfel?",
+        "answer3": "Eine Kanonenkugel ganz klar!",
+        "answer4": "Eine Bombe rette sich wer kann!!!",
+    },
+
+    {
+        "question": "Ist das hier ein Hund?",
+        "image": "level1/Hund.jpg",
+        "rightanswer": 4,
+        "answer1": "Nein",
+        "answer2": "Vielleicht?",
+        "answer3": "Apfelkuchen!",
+        "answer4": "Ja natürlich ist das ein Hund!",
+    },
+
+]}
+
+let questionlv2 = {"questionsarr": [
+
+    {
+        "question": "Wie tief ist der Marianengraben?",
+        "image": "level2/Marianengraben.jpg",
+        "rightanswer": 2,
+        "answer1": "ca. 10.000m",
+        "answer2": "ca. 11.000m",
+        "answer3": "ca. 12.000m",
+        "answer4": "ca. 12.500m",
+    },
+
+    {
+        "question": "Wie hoch ist der Mt. Everest?",
+        "image": "level2/MountEverest.jpg",
+        "rightanswer": 3,
+        "answer1": "8448m",
+        "answer2": "8884m",
+        "answer3": "8848m",
+        "answer4": "8480m",
+    },
+
+    {
+        "question": "Wie weit ist der nächste Stern von uns entfernt?",
+        "image": "level2/Sonnensystem.jpg",
+        "rightanswer": 4,
+        "answer1": "5 Mio. Kilometer",
+        "answer2": "200.000 Kilometer",
+        "answer3": "4.2 Lichtjahre",
+        "answer4": "147 Mio. Kilometer",
+    },
+
+   
+]}
+
+let questionlv3 = {"questionsarr": [
+
+    {
+        "question": "Wie viele Drachenschuppen hat der Wasser-Drachenkönig Letarios III?",
+        "image": "level3/Drache.jpg",
+        "rightanswer": 99999,
+        "answer1": "ähhh Alter?",
+        "answer2": "Was soll die Scheiße?",
+        "answer3": "Ähhh 10.000?",
+        "answer4": "Hast du mal das Bild gesehen du dummer Entwickler? Wie soll ich das zählen hä???",
+    },
+
+    {
+        "question": "Wenn ein Zug mit 100.000km/h fährt und 5 Sitzgarnituren in Rot hat im 3. Wagen, welches Material hat dann das Fenster vom Raumschiff mit dem Namen 'X48RTT2-PPS' des Menschenimperiums?",
+        "image": "level3/WTF.jpg",
+        "rightanswer": 99999,
+        "answer1": "Ahahahahahhaahha",
+        "answer2": "F*U",
+        "answer3": "Ich bin raus hier was ein scheiß Spiel",
+        "answer4": "Ernsthaft??? Oo",
+    },
+]}
+
