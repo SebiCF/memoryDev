@@ -34,11 +34,11 @@
 			border-radius: 10%;
 			transform: rotate3d(1, 1, 1, 360deg);
 			opacity: 0.9;
-			-webkit-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
-			-moz-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
-			-o-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
-			-khtml-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
-			transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
+			-webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
+			-moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
+			-o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
+			-khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
+			transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
 		}
 		div[class^=memoryCard]:hover{
 			background-size: 2.3cm;
@@ -46,11 +46,11 @@
 
 		div[class=memoryCardCorrect]{
 			cursor: default;
-			-webkit-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
-			-moz-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
-			-o-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
-			-khtml-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
-			transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
+			-webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
+			-moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
+			-o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
+			-khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
+			transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
 		}
 		div[class=memoryCardCorrect]:hover{
 			background-size: 2cm;

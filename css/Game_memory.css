@@ -52,11 +52,11 @@
   -webkit-transform: rotate3d(1, 1, 1, 360deg);
           transform: rotate3d(1, 1, 1, 360deg);
   opacity: 0.9;
-  -webkit-transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
-  -webkit-transition: background-color 0.5s ease-in-out, opacity 1.5s ease-in-out, -webkit-transform 1s;
-  transition: background-color 0.5s ease-in-out, opacity 1.5s ease-in-out, -webkit-transform 1s;
-  transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out;
-  transition: background-color 0.5s ease-in-out, transform 1s, opacity 1.5s ease-in-out, -webkit-transform 1s;
+  -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
+  -webkit-transition: background-color 0.5s ease-in-out, opacity 1.5s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, opacity 1.5s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, -webkit-transform 0.7s;
 }
 
 .memoryContainer .memoryFlexBox div[class^=memoryCard]:hover {
@@ -65,11 +65,11 @@
 
 .memoryContainer .memoryFlexBox div[class=memoryCardCorrect] {
   cursor: default;
-  -webkit-transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
-  -webkit-transition: background-color 0.5s ease-in-out, opacity 1s ease-in-out, -webkit-transform 0.5s;
-  transition: background-color 0.5s ease-in-out, opacity 1s ease-in-out, -webkit-transform 0.5s;
-  transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out;
-  transition: background-color 0.5s ease-in-out, transform 0.5s, opacity 1s ease-in-out, -webkit-transform 0.5s;
+  -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
+  -webkit-transition: background-color 0.5s ease-in-out, opacity 1s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, opacity 1s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, -webkit-transform 0.7s;
 }
 
 .memoryContainer .memoryFlexBox div[class=memoryCardCorrect]:hover {
