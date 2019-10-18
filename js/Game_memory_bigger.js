@@ -16,6 +16,9 @@ function createCardsArray(amount) {
 			},  */
 	];
 
+	amount = Math.floor(amount / 2);
+
+
 	if (amount < 5 || amount > 10) {
 		amount = 6;
 	}
@@ -87,9 +90,9 @@ function createMemoryContainer(allCardsShuffled, amount) {
 	let cardAmountSelector = document.createElement("input");
 	cardAmountSelector.type = "number";
 	if (amount > 1) {
-		cardAmountSelector.value = amount;
+		cardAmountSelector.value = amount*2;
 	} else {
-		cardAmountSelector.value = "6";
+		cardAmountSelector.value = "12";
 	}
 
 	cardAmountSelector.id = "cardAmountSelector";
