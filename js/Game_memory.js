@@ -3,8 +3,87 @@ initPage();
 
 
 function initPage() {
-	createCardsArray(12);
+	createMemoryContainer()
 
+}
+
+function createMemoryContainer() {
+
+	let gameTitel = document.createElement("h1");
+	gameTitel.innerHTML = "Memory Card Game";
+	gameTitel.id = "gameTitel";
+	document.querySelector("main").appendChild(gameTitel);
+
+	let memoryContainer = document.createElement("div");
+	memoryContainer.className = "memoryContainer";
+	document.querySelector("main").appendChild(memoryContainer);
+
+	let cardAmountSelector = document.createElement("input");
+	cardAmountSelector.type = "number";
+	cardAmountSelector.value = 12;
+
+	cardAmountSelector.id = "cardAmountSelector";
+	memoryContainer.appendChild(cardAmountSelector);
+
+	cardAmountSelector.addEventListener('click', function(e) {
+        e.target.select();
+    });
+
+	cardAmountSelector.addEventListener("keydown", function (event) {
+		if (event.keyCode === 13) {
+		let amount = parseInt(document.getElementById("cardAmountSelector").value);
+		let allTheCards = document.querySelectorAll('[class^=memoryCard]')
+		allTheCards.forEach(function(elem){
+			elem.style.opacity = "0";
+		})
+		let memoryFlexBox = document.querySelector(".memoryFlexBox")
+		memoryFlexBox.style.opacity = "0";
+		let memoryScore = document.getElementById("memoryScore");
+		memoryScore.style.opacity = "0";
+		turnAroundCardCounter = 0;
+		setTimeout(function () {
+			document.querySelector(".memoryFlexBox").innerHTML = " ";
+			startMemory(amount);
+		}, 500);
+		}
+	});
+
+	let startBtn = document.createElement("button");
+	startBtn.id = "startMemoryBtn";
+	startBtn.innerHTML = "New Game";
+	memoryContainer.appendChild(startBtn);
+	startBtn.addEventListener("click", function () {
+		let amount = parseInt(document.getElementById("cardAmountSelector").value);
+		let allTheCards = document.querySelectorAll('[class^=memoryCard]')
+		allTheCards.forEach(function(elem){
+			elem.style.opacity = "0";
+		})
+		let memoryFlexBox = document.querySelector(".memoryFlexBox")
+		memoryFlexBox.style.opacity = "0";
+		let memoryScore = document.getElementById("memoryScore");
+		memoryScore.style.opacity = "0";
+		turnAroundCardCounter = 0;
+		setTimeout(function () {
+			document.querySelector(".memoryFlexBox").innerHTML = " ";
+			startMemory(amount);
+		}, 500);
+	});
+
+	let memoryScore = document.createElement("div");
+	memoryScore.id = "memoryScore";
+	memoryScore.innerHTML = 0;
+	memoryContainer.appendChild(memoryScore);
+
+	let memoryFlexBox = document.createElement("div");
+	memoryFlexBox.className = "memoryFlexBox";
+	memoryContainer.appendChild(memoryFlexBox);
+}
+
+function startMemory() {
+	
+	let amount = parseInt(document.getElementById("cardAmountSelector").value);
+	createCardsArray(amount);
+	
 }
 
 function createCardsArray(amount) {
@@ -17,14 +96,11 @@ function createCardsArray(amount) {
 	];
 
 	amount = Math.floor(amount / 2);
-
-
 	if (amount < 5 || amount > 10) {
 		amount = 6;
 	}
 
 	for (i = 0; i < amount; i++) {
-
 
 		let firstCard = i * 2;
 		let secondCard = i * 2 + 1;
@@ -37,13 +113,14 @@ function createCardsArray(amount) {
 				secondCard = 99;
 				let positionOfBlack = colors.indexOf("black");
 				colors.splice(positionOfBlack, 1);
+				
 			} else {
 				colors.splice(randomColor, 1);
 			}
 
-
 		} else {
 			color = colors[0];
+			colors.splice(0, 1)
 		}
 
 		let firstNewCard = new CardConstructor(firstCard, color);
@@ -52,8 +129,7 @@ function createCardsArray(amount) {
 		allCards.push(secondNewCard);
 	}
 	let allCardsShuffled = shuffle(allCards);
-	createMemoryContainer(allCardsShuffled, amount);
-
+	createMemoryCards(allCardsShuffled);
 }
 
 function CardConstructor(number, color) {
@@ -61,7 +137,6 @@ function CardConstructor(number, color) {
 	this.color = color;
 
 };
-
 
 function shuffle(array) {
 	var m = array.length,
@@ -81,102 +156,35 @@ function shuffle(array) {
 	return array;
 }
 
-
-function createMemoryContainer(allCardsShuffled, amount) {
-	let memoryContainer = document.createElement("div");
-	memoryContainer.className = "memoryContainer";
-	document.querySelector("main").appendChild(memoryContainer);
-
-	let cardAmountSelector = document.createElement("input");
-	cardAmountSelector.type = "number";
-	if (amount > 1) {
-		cardAmountSelector.value = amount * 2;
-	} else {
-		cardAmountSelector.value = "12";
-	}
-
-	cardAmountSelector.id = "cardAmountSelector";
-	memoryContainer.appendChild(cardAmountSelector);
-	cardAmountSelector.addEventListener("change", function () {
-		let amount = parseInt(document.getElementById("cardAmountSelector").value);
-		document.querySelector("main").innerHTML = " ";
-		createCardsArray(amount);
-		turnAroundCardCounter = 0;
-	})
-
-	cardAmountSelector.addEventListener("keydown", function (event) {
-		if (event.keyCode === 13) {
-			let amount = parseInt(document.getElementById("cardAmountSelector").value);
-			document.querySelector("main").innerHTML = " ";
-			createCardsArray(amount);
-			turnAroundCardCounter = 0;
-		}
-	});
-
-	let startBtn = document.createElement("button");
-	startBtn.id = "startMemoryBtn";
-	startBtn.innerHTML = "Start Game";
-	memoryContainer.appendChild(startBtn);
-	startBtn.addEventListener("click", function () {
-		startMemory(allCardsShuffled);
-	});
-
-	let memoryScore = document.createElement("div");
-	memoryScore.id = "memoryScore";
-	memoryScore.innerHTML = 0;
-	memoryContainer.appendChild(memoryScore);
-
-	let memoryFlexBox = document.createElement("div");
-	memoryFlexBox.className = "memoryFlexBox";
-	memoryContainer.appendChild(memoryFlexBox);
-
-	createMemoryCards(allCardsShuffled, memoryFlexBox)
-
-}
-
-function createMemoryCards(allCardsShuffled, memoryFlexBox) {
+function createMemoryCards(allCardsShuffled) {
 	for (i = 0; i < allCardsShuffled.length; i++) {
 		let memoryCard = document.createElement("div");
 		memoryCard.className = "memoryCard";
-		memoryFlexBox.appendChild(memoryCard);
+		let memFlexBox = document.querySelector(".memoryFlexBox");
+		memFlexBox.appendChild(memoryCard);
 		memoryCard.id = allCardsShuffled[i].cardNumber;
 		memoryCard.style.visibility = "hidden";
-
-	}
-}
-
-function startMemory(allCardsShuffled) {
-	let startToReload = document.getElementById("startMemoryBtn");
-	startToReload.removeEventListener("click", function () {
-		startMemory(allCardsShuffled);
-	});
-	startToReload.innerHTML = "New Game";
-	startToReload.addEventListener("click", function () {
-		let resetContainer = document.querySelector(".memoryContainer");
-		resetContainer.remove();
-		let reshuffleAllCardsShuffled = shuffle(allCardsShuffled);
-		createMemoryContainer(reshuffleAllCardsShuffled);
-		setTimeout(function () {
-			startMemory(reshuffleAllCardsShuffled);
-		}, 500);
-
-	});
-	let memoryFlexBox = document.querySelector(".memoryFlexBox")
-	memoryFlexBox.style.visibility = "visible";
-	let memoryScore = document.getElementById("memoryScore");
-	memoryScore.style.visibility = "visible";
-	let allTheCards = document.querySelectorAll(".memoryCard");
-	allTheCards.forEach(function (elem) {
-		elem.style.transform = "rotate3d(1, 1, 1, 0deg)"
-		elem.style.visibility = "visible";
-
-		turnAroundCard(elem, allCardsShuffled);
+		memoryCard.style.opacity = "0.9";
+		setTimeout(function(){
+			memoryCard.style.transform = "rotate3d(1, 1, 1, 0deg)";
+			memoryCard.style.visibility = "visible";
+			let memoryFlexBox = document.querySelector(".memoryFlexBox")
+			memoryFlexBox.style.opacity = "0.9";
+			let memoryScore = document.getElementById("memoryScore");
+			memoryScore.style.opacity = "0.9";
+		}, 300)
+		memoryCard.addEventListener("click", function (e) {
+		turnAroundCard(e, allCardsShuffled);
 
 	})
+	}
+	
 }
 
-function turnAroundCard(elem, allCardsShuffled) {
-	elem.addEventListener("click", function (e) {
+
+
+function turnAroundCard(e, allCardsShuffled) {
+	
 		let counterState = false;
 		let targetCardId = e.target.id;
 		var firstCardOfPairColor;
@@ -187,16 +195,18 @@ function turnAroundCard(elem, allCardsShuffled) {
 			for (i = 0; i < allCardsShuffled.length; i++) {
 
 				let checkCards = document.querySelectorAll(".memoryCard");
-
 				if (targetCardId == 98 || targetCardId == 99) {
 
+					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
+					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
 					e.target.className = "memoryCard choosenCard";
+
 					break;
 				} else if (targetCardId == allCardsShuffled[i].cardNumber) {
 
 					e.target.style.backgroundColor = allCardsShuffled[i].color;
 					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
-					e.target.style.backgroundImage = "url(./img/memory/ace_of_spadesBlack.png)";
+					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesBlack.png), radial-gradient(${allCardsShuffled[i].color}, black)`;
 					e.target.className = "memoryCard choosenCard";
 					break;
 				}
@@ -208,12 +218,19 @@ function turnAroundCard(elem, allCardsShuffled) {
 			for (i = 0; i < allCardsShuffled.length; i++) {
 
 				let checkCards = document.querySelectorAll(".memoryCard");
+				if (targetCardId == 98 || targetCardId == 99) {
 
-				if (targetCardId == allCardsShuffled[i].cardNumber) {
+					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
+					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
+					e.target.className = "memoryCard choosenCard";
+
+					break;
+				}
+				else if (targetCardId == allCardsShuffled[i].cardNumber) {
+					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)";
+					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesBlack.png), radial-gradient(${allCardsShuffled[i].color}, black)`;
+					e.target.className = "memoryCard choosenCard";
 					e.target.style.backgroundColor = allCardsShuffled[i].color;
-					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)" /* you might wonder why I choose 2 instead of 1 for rotation axis like above, well this is just to waste your time :P */
-					e.target.style.backgroundImage = "url(./img/memory/ace_of_spadesBlack.png)";
-					e.target.className = "memoryCard choosenCard"
 					break;
 
 				}
@@ -223,11 +240,12 @@ function turnAroundCard(elem, allCardsShuffled) {
 
 			cardValidation(counterState, allCardsShuffled)
 		}
-	})
+	
 }
 
 function cardValidation(counterState, allCardsShuffled) {
 	let choosenCards = document.querySelectorAll("[class^='memoryCard choosenCard']");
+	let shownByJokerCardId;
 	choosenCards.forEach(function (elem, i) {
 		if (i == 0) {
 			firstCardOfPairColor = elem.style.backgroundColor;
@@ -238,7 +256,7 @@ function cardValidation(counterState, allCardsShuffled) {
 		}
 	})
 
-	if (firstCardOfPairColor == secondCardOfPairColor && firstCardOfPairColor != "black" && secondCardOfPairColor != "black") {
+	if (firstCardOfPairColor == secondCardOfPairColor) {
 		let y = document.getElementById(firstCardOfPairId);
 		y.className = "memoryCardCorrect";
 		let x = document.getElementById(secondCardOfPairId);
@@ -252,48 +270,74 @@ function cardValidation(counterState, allCardsShuffled) {
 		if ((currentID == 98 || currentID == 99) && checkCards[i].className == "memoryCard choosenCard") {
 			checkCards[i].className = "memoryCardCorrect";
 			counterState = true;
-			let showOneColor = Math.floor(Math.random() * (checkCards.length));
-
+			
+			let checkRemainingCards = document.querySelectorAll('[class=memoryCard]');
+			let checkRemainingCardsArray = Array.from(checkRemainingCards);
+			checkRemainingCardsArray.forEach(function(elem){
+				if (elem.className == "memoryCard choosenCard"){
+					let currentPosition = checkRemainingCardsArray.indexOf(elem);
+					checkRemainingCardsArray.splice(currentPosition, 1);
+				}
+			})
+			let showOneColor = Math.floor(Math.random() * (checkRemainingCardsArray.length));
 			for (i = 0; i < allCardsShuffled.length; i++) {
-				if (checkCards.length == 0 || document.querySelectorAll(".memoryCardCorrect").length == allCardsShuffled.length) {
+				
+				if (checkRemainingCardsArray.length == 0 || document.querySelectorAll(".memoryCardCorrect").length == allCardsShuffled.length) {
 					break;
-				} else if (checkCards[showOneColor].id == allCardsShuffled[i].cardNumber && checkCards[showOneColor].className != "memoryCard choosenCard") {
-					checkCards[showOneColor].style.borderWidth = `6px`;
-					checkCards[showOneColor].style.borderColor = allCardsShuffled[i].color
-					checkCards[showOneColor].style.borderRadius = "40%";
-					checkCards[showOneColor].style.borderStyle = "solid";
-					checkCards[showOneColor].style.width = "20%";
+
+				} else if (checkRemainingCardsArray[showOneColor].id == allCardsShuffled[i].cardNumber && checkRemainingCardsArray[showOneColor].className != "memoryCard choosenCard") {
+
+					checkRemainingCardsArray[showOneColor].style.transform = "rotate3d(1, 1, 1, 0deg)";
+					checkRemainingCardsArray[showOneColor].style.backgroundColor = allCardsShuffled[i].color;
+					checkRemainingCardsArray[showOneColor].style.boxShadow = `0 0 12px 7px ${allCardsShuffled[i].color}`;
+					checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${allCardsShuffled[i].color} 100%)`;
+					checkRemainingCardsArray[showOneColor].style.backgroundSize = "5vw, 10vw, 20vw";
+					checkRemainingCardsArray[showOneColor].style.backgroundPositionX ="-10vw";
+					shownByJokerCardId = checkRemainingCardsArray[showOneColor].id;
+					let passOnColor = checkRemainingCardsArray[showOneColor];
+					
+					setTimeout(function(){
+						checkRemainingCardsArray[showOneColor].style.backgroundPositionX ="center";
+						checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${checkRemainingCardsArray[showOneColor].color} 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${checkRemainingCardsArray[showOneColor].color} 100%)`;
+					}, 750)
 					break;
 				}
 			}
-			break;
 		}
 	}
-	checkBoardState(counterState, allCardsShuffled);
+	checkBoardState(counterState, allCardsShuffled, shownByJokerCardId);
 }
 
-function checkBoardState(counterState, allCardsShuffled) {
+function checkBoardState(counterState, allCardsShuffled, shownByJokerCardId) {
 	setTimeout(function () {
 		let allTheCards = document.querySelectorAll('[class^=memoryCard]')
 		allTheCards.forEach(function (elem) {
 
 			if (elem.className == "memoryCard choosenCard" && elem.style.backgroundColor != "black" && elem.style.backgroundcColor !== "") {
-
-				if (elem.style.backgroundColor !== "black" && elem.style.backgroundcColor !== "" && elem.style.backgroundImage == 'url("./img/memory/ace_of_spadesBlack.png")') {
+				if (elem.style.backgroundColor !== "black" && elem.style.backgroundcColor !== "") {
+					let elemStyle = elem.style.boxShadow;
+					
 					elem.style.boxShadow = "0 0 12px 7px red";
 					setTimeout(function () {
-						let hideRed = document.querySelectorAll(".memoryCard");
-						for (i = 0; i < hideRed.length; ++i) {
-
-							hideRed[i].style.boxShadow = '';
-
-						};
+						if (elemStyle != ""){
+							elemStyle = "";
+							
+						}
+						elem.style.boxShadow = elemStyle;
+							
 					}, 500);
 				}
-				elem.style.backgroundColor = "black";
+				
+				if (elem.id == shownByJokerCardId){
+					let backColor = elem.style.backgroundColor;
+					elem.style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${backColor} 0%, rgba(190,190,190,0.969625350140056) 100%)`;
+				} 
+				else {
+					elem.style.backgroundImage = "url(./img/memory/ace_of_spadesWhite.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%)";
+				}							
 				elem.style.transform = "rotate3d(1, 1, 1, 0deg)"
-				elem.style.backgroundImage = "url(./img/memory/ace_of_spadesWhite.png)";
 				elem.classList.remove("choosenCard");
+				elem.style.backgroundColor = "black";
 			}
 
 		})
@@ -304,7 +348,7 @@ function checkBoardState(counterState, allCardsShuffled) {
 		resetChoosenCards();
 		checkForGameEnd(allCardsShuffled);
 
-	}, 1200);
+	}, 1000);
 }
 
 function checkScoreConditions(counterState) {
@@ -324,9 +368,9 @@ function checkScoreConditions(counterState) {
 }
 
 function hideCorrectCards() {
-	let hideCorrectCards = document.querySelectorAll(".memoryCardCorrect");
+	let hideCorrectCards = document.querySelectorAll("[class='memoryCardCorrect']");
 	hideCorrectCards.forEach(function (elem) {
-		elem.style.transform = "rotate3d(1, 1, 1, 720deg)";
+		elem.style.transform = "rotate3d(4, 0, 4, 180deg)";
 		elem.style.boxShadow = "0 0 12px 7px green";
 		elem.style.opacity = "0"
 	})
@@ -342,16 +386,24 @@ function resetChoosenCards() {
 }
 
 function checkForGameEnd(allCardsShuffled) {
-	let checkIfBoardIsClear = document.querySelectorAll(".memoryCardCorrect");
-	let checkAllCards = document.querySelectorAll("memoryCard").length
-	if (checkIfBoardIsClear.length == allCardsShuffled.length && checkAllCards == 0) {
+	let checkIfBoardIsClear = document.querySelectorAll("[class^='memoryCardCorrect']");
+	let checkAllCards = document.querySelectorAll("memoryCard")
+	if (checkIfBoardIsClear.length == allCardsShuffled.length && checkAllCards.length == 0) {
 		setTimeout(function () {
 			let endText = document.createElement("h1");
 			let score = parseInt(document.getElementById("memoryScore").innerHTML);
 			endText.innerHTML = `Congratulations!! It took you ${score} turns!`;
 			endText.id = "endtext";
-			let memoryCards = document.querySelectorAll(".memoryCardCorrect");
 			let memFlexBox = document.querySelector(".memoryFlexBox");
+			memFlexBox.style.padding = "2% 0% 4% 0%" ;
+			setTimeout(function(){
+				endText.style.opacity = "0.9";
+			}, 100)
+			let memoryCards = document.querySelectorAll("[class^='memoryCard']");
+			memoryCards.forEach(function(elem){
+				elem.style.opacity = "0.9";
+				elem.style.transform = "rotate3d(1, 1, 1, 0deg)"
+			});
 			memFlexBox.insertBefore(endText, memoryCards[0]);
 
 		}, 1250)
