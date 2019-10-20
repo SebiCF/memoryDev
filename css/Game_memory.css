@@ -1,3 +1,128 @@
+@charset "UTF-8";
+html {
+  background-color: rgba(0, 0, 0, 0.9);
+  margin: 0px;
+  padding: 0px;
+  font-family: "Abel", sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  width: 100%;
+  background: #101010;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  min-height: 1.5em;
+  font-weight: 600;
+  font-size: 135%;
+  letter-spacing: 1px;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  font-weight: 600;
+  font-size: 100%;
+  letter-spacing: 1px;
+  float: left;
+  color: #ffffffd1;
+  text-align: center;
+  padding: 0.6em 0.6em 0.6em 0.6em;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-weight: 600;
+  font-size: 100%;
+  letter-spacing: 1px;
+  border: none;
+  outline: none;
+  color: #ffffffd1;
+  padding: 0.6em 0.6em 0.6em 0.6em;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  min-width: 112px;
+}
+
+.dropdown .dropbtn:hover {
+  color: #ffffff;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+  min-width: 112px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #ffffffd1;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+li > a:after {
+  content: ' ▼';
+  font-size: 67%;
+}
+
+li > a:only-child:after {
+  content: '';
+  font-size: 67%;
+}
+
+main {
+  margin: 2% auto;
+  max-width: 1400px;
+}
+
+main h1 {
+  text-align: center;
+  color: white;
+  letter-spacing: 1px;
+  margin: -1% 0% 1% 0%;
+}
+
 .memoryContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -33,7 +158,7 @@
   background: #333538;
   background: -webkit-gradient(linear, left top, left bottom, from(#333538), to(#7f858a));
   background: linear-gradient(top, #333538 0%, #7f858a 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333538', endColorstr='#7f858a',GradientType=0 );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333538', endColorstr='#7f858a', GradientType=0);
 }
 
 .memoryContainer #startMemoryBtn:hover {
@@ -59,22 +184,21 @@
   opacity: 0;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
-  visibility: visible;
-  -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-  -webkit-transition: background-color 0.5s ease-in-out, opacity 0.6s ease-in-out, -webkit-transform 0.7s;
-  transition: background-color 0.5s ease-in-out, opacity 0.6s ease-in-out, -webkit-transform 0.7s;
-  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out, -webkit-transform 0.7s;
+  visibility: hidden;
+  -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+  -webkit-transition: background-color 0.5s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out, -webkit-transform 0.7s;
 }
 
 .memoryContainer #cardAmountSelector {
-  width: 15%;
+  width: 4%;
   font-size: 130%;
   -ms-flex-item-align: end;
       align-self: flex-end;
   margin-bottom: -3%;
   margin-right: 7%;
-  padding-bottom: 2px;
   border: none;
   border-radius: 4px;
   border-bottom: 1px solid black;
@@ -90,19 +214,31 @@
 }
 
 .memoryContainer #cardAmountSelector {
-  height: 1.5em;
-  font-size: 170%;
+  font-size: 160%;
   font-weight: 600;
-  padding: 0 8px;
+  padding: 0.5% 0.5% 0.5% 0.5%;
   background-color: rgba(27, 27, 27, 0.9) !important;
   color: #ffffffbf;
   border-color: gray;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
+          box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
+  text-indent: 20%;
+  -webkit-transition: all 0.5s, width 0.6s;
+  transition: all 0.5s, width 0.6s;
+  background-image: linear-gradient(-144deg, #0d0d0d, #0d0d0d, #151414);
+  letter-spacing: 1px;
+  color: #ded9d9f5;
 }
 
 .memoryContainer #cardAmountSelector {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
+}
+
+.memoryContainer #cardAmountSelector:focus {
+  text-indent: 4%;
 }
 
 .memoryContainer #cardAmountSelector::-webkit-inner-spin-button,
@@ -127,12 +263,12 @@
   border: 2px solid gray;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
-  visibility: visible;
-  -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-  -webkit-transition: background-color 0.5s ease-in-out, opacity 0.6s ease-in-out, -webkit-transform 0.7s;
-  transition: background-color 0.5s ease-in-out, opacity 0.6s ease-in-out, -webkit-transform 0.7s;
-  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out, -webkit-transform 0.7s;
+  visibility: hidden;
+  -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+  -webkit-transition: background-color 0.5s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, opacity 0.4s ease-in-out, -webkit-transform 0.7s;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+  transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out, -webkit-transform 0.7s;
 }
 
 .memoryContainer .memoryFlexBox div[class^=memoryCard] {
@@ -151,7 +287,7 @@
   border-radius: 10%;
   -webkit-transform: rotate3d(5, 5, 5, 250deg);
           transform: rotate3d(5, 5, 5, 250deg);
-  opacity: 0;
+  opacity: 0.5;
   -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
   -webkit-transition: background-color 0.5s ease-in-out, opacity 1.5s ease-in-out, background-position 0.7s ease-in, -webkit-transform 0.7s;
   transition: background-color 0.5s ease-in-out, opacity 1.5s ease-in-out, background-position 0.7s ease-in, -webkit-transform 0.7s;
@@ -180,6 +316,7 @@
 
 #endtext {
   width: 100%;
+  font-size: 250%;
   color: green;
   margin: 0% 0% 3% 0%;
   font-weight: 600;

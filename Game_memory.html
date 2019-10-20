@@ -5,11 +5,8 @@
 
 <head>
     <script defer src="./js/Game_memory.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/Project.css">
     <link rel="stylesheet" href="./css/Game_memory.css">
-
-    <link rel="stylesheet" href="css/Project01_Team.css">
+    <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -18,19 +15,19 @@
 <body>
 
     <header id="topHead">
-            <nav>
-                <ul>
-                    <li><a href="#">Navigation</a>
-                        <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Games</a>
-                                <ul>
-                                    <li><a href="#">Memory</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+            <nav class="navbar">
+                <a href="#">Home</a>
+                        <div class="dropdown">
+                            <button class="dropbtn">Games
+                            <i class="fa fa-caret-down"></i>
+                            </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Memory</a>
+                                </div>
+                            
+                        </div>
+                   
+                
             </nav>
     </header>
 

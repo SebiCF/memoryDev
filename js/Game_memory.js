@@ -20,31 +20,50 @@ function createMemoryContainer() {
 
 	let cardAmountSelector = document.createElement("input");
 	cardAmountSelector.type = "number";
-	cardAmountSelector.value = 12;
-
+	
 	cardAmountSelector.id = "cardAmountSelector";
 	memoryContainer.appendChild(cardAmountSelector);
-
-	cardAmountSelector.addEventListener('click', function(e) {
-        e.target.select();
-    });
+	cardAmountSelector.addEventListener("focus", function (event) {
+		this.placeholder = "Number of cards..";
+		this.style.width = "20%";
+		this.style.textIndent = "4%";
+	});
+	cardAmountSelector.addEventListener("focusout", function (event) {
+		if (this.value === '')
+        this.value = this.getAttribute('data-value');
+		this.placeholder = cardAmountSelector.value; 
+		this.style.width = "4%";
+		this.style.textIndent = "20%";
+	});
+	cardAmountSelector.addEventListener('click', function (e) {
+		e.target.select();
+		this.setAttribute('data-value', this.value);
+		this.value = '';
+		this.placeholder = "Number of cards..";
+		this.style.width = "20%";
+		this.style.textIndent = "4%";
+	});
 
 	cardAmountSelector.addEventListener("keydown", function (event) {
 		if (event.keyCode === 13) {
-		let amount = parseInt(document.getElementById("cardAmountSelector").value);
-		let allTheCards = document.querySelectorAll('[class^=memoryCard]')
-		allTheCards.forEach(function(elem){
-			elem.style.opacity = "0";
-		})
-		let memoryFlexBox = document.querySelector(".memoryFlexBox")
-		memoryFlexBox.style.opacity = "0";
-		let memoryScore = document.getElementById("memoryScore");
-		memoryScore.style.opacity = "0";
-		turnAroundCardCounter = 0;
-		setTimeout(function () {
-			document.querySelector(".memoryFlexBox").innerHTML = " ";
-			startMemory(amount);
-		}, 500);
+			let amount = parseInt(document.getElementById("cardAmountSelector").value);
+			let allTheCards = document.querySelectorAll('[class^=memoryCard]')
+			allTheCards.forEach(function (elem) {
+				elem.style.opacity = "0";
+			})
+
+			let memoryFlexBox = document.querySelector(".memoryFlexBox")
+			memoryFlexBox.style.opacity = "0";
+			let memoryScore = document.getElementById("memoryScore");
+			memoryScore.style.opacity = "0";
+			turnAroundCardCounter = 0;
+			cardAmountSelector.placeholder = cardAmountSelector.value; 
+			cardAmountSelector.style.width = "4%";
+			cardAmountSelector.style.textIndent = "20%";
+			setTimeout(function () {
+				document.querySelector(".memoryFlexBox").innerHTML = " ";
+				startMemory(amount);
+			}, 500);
 		}
 	});
 
@@ -55,7 +74,7 @@ function createMemoryContainer() {
 	startBtn.addEventListener("click", function () {
 		let amount = parseInt(document.getElementById("cardAmountSelector").value);
 		let allTheCards = document.querySelectorAll('[class^=memoryCard]')
-		allTheCards.forEach(function(elem){
+		allTheCards.forEach(function (elem) {
 			elem.style.opacity = "0";
 		})
 		let memoryFlexBox = document.querySelector(".memoryFlexBox")
@@ -80,20 +99,18 @@ function createMemoryContainer() {
 }
 
 function startMemory() {
-	
+
 	let amount = parseInt(document.getElementById("cardAmountSelector").value);
+	if (isNaN(amount) == true){
+		amount = 12;
+	}
 	createCardsArray(amount);
-	
+
 }
 
 function createCardsArray(amount) {
 	let colors = ["red", "blue", "green", "yellow", "purple", "cyan", "#e67300", "#ff99ff", "#33ff33", "black"];
-	let allCards = [
-		/* {
-				"cardNumber": 99,
-				"color": "special",
-			},  */
-	];
+	let allCards = [];
 
 	amount = Math.floor(amount / 2);
 	if (amount < 5 || amount > 10) {
@@ -113,7 +130,7 @@ function createCardsArray(amount) {
 				secondCard = 99;
 				let positionOfBlack = colors.indexOf("black");
 				colors.splice(positionOfBlack, 1);
-				
+
 			} else {
 				colors.splice(randomColor, 1);
 			}
@@ -128,6 +145,7 @@ function createCardsArray(amount) {
 		allCards.push(firstNewCard);
 		allCards.push(secondNewCard);
 	}
+	document.getElementById("cardAmountSelector").value = amount*2;
 	let allCardsShuffled = shuffle(allCards);
 	createMemoryCards(allCardsShuffled);
 }
@@ -163,84 +181,93 @@ function createMemoryCards(allCardsShuffled) {
 		let memFlexBox = document.querySelector(".memoryFlexBox");
 		memFlexBox.appendChild(memoryCard);
 		memoryCard.id = allCardsShuffled[i].cardNumber;
-		memoryCard.style.visibility = "hidden";
-		memoryCard.style.opacity = "0.9";
-		setTimeout(function(){
+		// memoryCard.style.visibility = "hidden";
+		let memoryFlexBox = document.querySelector(".memoryFlexBox")
+		memoryFlexBox.style.visibility = "visible";
+		memFlexBox.style.padding = "2.5% 1% 2% 1%";
+		let memoryScore = document.getElementById("memoryScore");
+		memoryScore.style.visibility = "visible";
+
+		setTimeout(function () {
+			memoryFlexBox.style.opacity = "0.9";
+			memoryScore.style.opacity = "0.9";
 			memoryCard.style.transform = "rotate3d(1, 1, 1, 0deg)";
 			memoryCard.style.visibility = "visible";
-			let memoryFlexBox = document.querySelector(".memoryFlexBox")
-			memoryFlexBox.style.opacity = "0.9";
-			let memoryScore = document.getElementById("memoryScore");
-			memoryScore.style.opacity = "0.9";
-		}, 300)
-		memoryCard.addEventListener("click", function (e) {
-		turnAroundCard(e, allCardsShuffled);
+			memoryCard.style.opacity = "0.9";
 
-	})
+
+		}, 200)
+		let score = parseInt(document.getElementById("memoryScore").innerHTML);
+		score = 0;
+		document.getElementById("memoryScore").innerHTML = score;
+		memoryCard.addEventListener("click", function (e) {
+			turnAroundCard(e, allCardsShuffled);
+
+		})
 	}
-	
+
 }
 
 
 
 function turnAroundCard(e, allCardsShuffled) {
-	
-		let counterState = false;
-		let targetCardId = e.target.id;
-		var firstCardOfPairColor;
-		var firstCardOfPairId;
-		let secondCardOfPairColor;
-		let secondCardOfPairId;
-		if (turnAroundCardCounter == 0) {
-			for (i = 0; i < allCardsShuffled.length; i++) {
 
-				let checkCards = document.querySelectorAll(".memoryCard");
-				if (targetCardId == 98 || targetCardId == 99) {
+	let counterState = false;
+	let targetCardId = e.target.id;
+	var firstCardOfPairColor;
+	var firstCardOfPairId;
+	let secondCardOfPairColor;
+	let secondCardOfPairId;
+	if (turnAroundCardCounter == 0) {
+		for (i = 0; i < allCardsShuffled.length; i++) {
 
-					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
-					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
-					e.target.className = "memoryCard choosenCard";
+			let checkCards = document.querySelectorAll(".memoryCard");
+			if (targetCardId == 98 || targetCardId == 99) {
 
-					break;
-				} else if (targetCardId == allCardsShuffled[i].cardNumber) {
+				e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
+				e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
+				e.target.className = "memoryCard choosenCard";
 
-					e.target.style.backgroundColor = allCardsShuffled[i].color;
-					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
-					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesBlack.png), radial-gradient(${allCardsShuffled[i].color}, black)`;
-					e.target.className = "memoryCard choosenCard";
-					break;
-				}
+				break;
+			} else if (targetCardId == allCardsShuffled[i].cardNumber) {
 
-			}
-			turnAroundCardCounter++;
-
-		} else if (turnAroundCardCounter == 1) {
-			for (i = 0; i < allCardsShuffled.length; i++) {
-
-				let checkCards = document.querySelectorAll(".memoryCard");
-				if (targetCardId == 98 || targetCardId == 99) {
-
-					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
-					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
-					e.target.className = "memoryCard choosenCard";
-
-					break;
-				}
-				else if (targetCardId == allCardsShuffled[i].cardNumber) {
-					e.target.style.transform = "rotate3d(9, 9, 9, 360deg)";
-					e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesBlack.png), radial-gradient(${allCardsShuffled[i].color}, black)`;
-					e.target.className = "memoryCard choosenCard";
-					e.target.style.backgroundColor = allCardsShuffled[i].color;
-					break;
-
-				}
+				e.target.style.backgroundColor = allCardsShuffled[i].color;
+				e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
+				e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesBlack.png), radial-gradient(${allCardsShuffled[i].color}, black)`;
+				e.target.className = "memoryCard choosenCard";
+				break;
 			}
 
-			turnAroundCardCounter++;
-
-			cardValidation(counterState, allCardsShuffled)
 		}
-	
+		turnAroundCardCounter++;
+
+	} else if (turnAroundCardCounter == 1) {
+		for (i = 0; i < allCardsShuffled.length; i++) {
+
+			let checkCards = document.querySelectorAll(".memoryCard");
+			if (targetCardId == 98 || targetCardId == 99) {
+
+				e.target.style.transform = "rotate3d(9, 9, 9, 360deg)"
+				e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
+				e.target.className = "memoryCard choosenCard";
+
+
+				break;
+			} else if (targetCardId == allCardsShuffled[i].cardNumber) {
+				e.target.style.transform = "rotate3d(9, 9, 9, 360deg)";
+				e.target.style.backgroundImage = `url(./img/memory/ace_of_spadesBlack.png), radial-gradient(${allCardsShuffled[i].color}, black)`;
+				e.target.className = "memoryCard choosenCard";
+				e.target.style.backgroundColor = allCardsShuffled[i].color;
+				break;
+
+			}
+		}
+
+		turnAroundCardCounter++;
+
+		cardValidation(counterState, allCardsShuffled)
+	}
+
 }
 
 function cardValidation(counterState, allCardsShuffled) {
@@ -257,6 +284,15 @@ function cardValidation(counterState, allCardsShuffled) {
 	})
 
 	if (firstCardOfPairColor == secondCardOfPairColor) {
+		if (firstCardOfPairId == 98 && secondCardOfPairId == 99) {
+			// let twoJokerEvent = setInterval(function () {
+
+			// 	})
+			goldJokerEvent(allCardsShuffled);
+			goldJokerEvent(allCardsShuffled);
+
+
+		}
 		let y = document.getElementById(firstCardOfPairId);
 		y.className = "memoryCardCorrect";
 		let x = document.getElementById(secondCardOfPairId);
@@ -270,42 +306,46 @@ function cardValidation(counterState, allCardsShuffled) {
 		if ((currentID == 98 || currentID == 99) && checkCards[i].className == "memoryCard choosenCard") {
 			checkCards[i].className = "memoryCardCorrect";
 			counterState = true;
-			
-			let checkRemainingCards = document.querySelectorAll('[class=memoryCard]');
-			let checkRemainingCardsArray = Array.from(checkRemainingCards);
-			checkRemainingCardsArray.forEach(function(elem){
-				if (elem.className == "memoryCard choosenCard"){
-					let currentPosition = checkRemainingCardsArray.indexOf(elem);
-					checkRemainingCardsArray.splice(currentPosition, 1);
-				}
-			})
-			let showOneColor = Math.floor(Math.random() * (checkRemainingCardsArray.length));
-			for (i = 0; i < allCardsShuffled.length; i++) {
-				
-				if (checkRemainingCardsArray.length == 0 || document.querySelectorAll(".memoryCardCorrect").length == allCardsShuffled.length) {
-					break;
-
-				} else if (checkRemainingCardsArray[showOneColor].id == allCardsShuffled[i].cardNumber && checkRemainingCardsArray[showOneColor].className != "memoryCard choosenCard") {
-
-					checkRemainingCardsArray[showOneColor].style.transform = "rotate3d(1, 1, 1, 0deg)";
-					checkRemainingCardsArray[showOneColor].style.backgroundColor = allCardsShuffled[i].color;
-					checkRemainingCardsArray[showOneColor].style.boxShadow = `0 0 12px 7px ${allCardsShuffled[i].color}`;
-					checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${allCardsShuffled[i].color} 100%)`;
-					checkRemainingCardsArray[showOneColor].style.backgroundSize = "5vw, 10vw, 20vw";
-					checkRemainingCardsArray[showOneColor].style.backgroundPositionX ="-10vw";
-					shownByJokerCardId = checkRemainingCardsArray[showOneColor].id;
-					let passOnColor = checkRemainingCardsArray[showOneColor];
-					
-					setTimeout(function(){
-						checkRemainingCardsArray[showOneColor].style.backgroundPositionX ="center";
-						checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${checkRemainingCardsArray[showOneColor].color} 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${checkRemainingCardsArray[showOneColor].color} 100%)`;
-					}, 750)
-					break;
-				}
-			}
+			goldJokerEvent(allCardsShuffled);
 		}
 	}
 	checkBoardState(counterState, allCardsShuffled, shownByJokerCardId);
+}
+
+
+function goldJokerEvent(allCardsShuffled) {
+	let checkRemainingCards = document.querySelectorAll('[class=memoryCard]');
+	let checkRemainingCardsArray = Array.from(checkRemainingCards);
+	checkRemainingCardsArray.forEach(function (elem) {
+		if (elem.className == "memoryCard choosenCard") {
+			let currentPosition = checkRemainingCardsArray.indexOf(elem);
+			checkRemainingCardsArray.splice(currentPosition, 1);
+		}
+	})
+	let showOneColor = Math.floor(Math.random() * (checkRemainingCardsArray.length));
+	for (i = 0; i < allCardsShuffled.length; i++) {
+
+		if (checkRemainingCardsArray.length == 0 || document.querySelectorAll(".memoryCardCorrect").length == allCardsShuffled.length) {
+			break;
+
+		} else if (checkRemainingCardsArray[showOneColor].id == allCardsShuffled[i].cardNumber && checkRemainingCardsArray[showOneColor].className != "memoryCard choosenCard") {
+
+			checkRemainingCardsArray[showOneColor].style.transform = "rotate3d(1, 1, 1, 0deg)";
+			checkRemainingCardsArray[showOneColor].style.backgroundColor = allCardsShuffled[i].color;
+			checkRemainingCardsArray[showOneColor].style.boxShadow = `0 0 12px 7px ${allCardsShuffled[i].color}`;
+			checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${allCardsShuffled[i].color} 100%)`;
+			checkRemainingCardsArray[showOneColor].style.backgroundSize = "5vw, 10vw, 20vw";
+			checkRemainingCardsArray[showOneColor].style.backgroundPositionX = "-10vw";
+			shownByJokerCardId = checkRemainingCardsArray[showOneColor].id;
+			let passOnColor = checkRemainingCardsArray[showOneColor];
+
+			setTimeout(function () {
+				passOnColor.style.backgroundPositionX = "center";
+				passOnColor.style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${checkRemainingCardsArray[showOneColor].style.backgroundColor} 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${checkRemainingCardsArray[showOneColor].style.backgroundColor} 100%)`;
+			}, 750)
+			break;
+		}
+	}
 }
 
 function checkBoardState(counterState, allCardsShuffled, shownByJokerCardId) {
@@ -316,25 +356,24 @@ function checkBoardState(counterState, allCardsShuffled, shownByJokerCardId) {
 			if (elem.className == "memoryCard choosenCard" && elem.style.backgroundColor != "black" && elem.style.backgroundcColor !== "") {
 				if (elem.style.backgroundColor !== "black" && elem.style.backgroundcColor !== "") {
 					let elemStyle = elem.style.boxShadow;
-					
+
 					elem.style.boxShadow = "0 0 12px 7px red";
 					setTimeout(function () {
-						if (elemStyle != ""){
+						if (elemStyle != "") {
 							elemStyle = "";
-							
+
 						}
 						elem.style.boxShadow = elemStyle;
-							
+
 					}, 500);
 				}
-				
-				if (elem.id == shownByJokerCardId){
+
+				if (elem.id == shownByJokerCardId) {
 					let backColor = elem.style.backgroundColor;
 					elem.style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${backColor} 0%, rgba(190,190,190,0.969625350140056) 100%)`;
-				} 
-				else {
+				} else {
 					elem.style.backgroundImage = "url(./img/memory/ace_of_spadesWhite.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%)";
-				}							
+				}
 				elem.style.transform = "rotate3d(1, 1, 1, 0deg)"
 				elem.classList.remove("choosenCard");
 				elem.style.backgroundColor = "black";
@@ -374,6 +413,17 @@ function hideCorrectCards() {
 		elem.style.boxShadow = "0 0 12px 7px green";
 		elem.style.opacity = "0"
 	})
+	let checkAllCards = document.querySelectorAll(".memoryCard");
+	if (checkAllCards.length == 1) {
+		checkAllCards.forEach(function (elem) {
+			elem.className = "memoryCardCorrect";
+			elem.style.transform = "rotate3d(9, 9, 9, 360deg)"
+			elem.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient( 111.6deg,  rgba(73,235,221,1) -0%, rgba(83,222,219,1) 7.1%, rgba(105,191,217,1) 13.4%, rgba(127,157,214,1) 18%, rgba(155,113,208,1) 23.9%, rgba(178,73,201,1) 28.8%, rgba(200,45,192,1) 33.3%, rgba(213,42,180,1) 38%, rgba(232,44,145,1) 44.2%, rgba(239,45,128,1) 52.4%, rgba(249,66,107,1) 59.7%, rgba(252,105,98,1) 67.3%, rgba(252,105,98,1) 74.4%, rgba(254,145,92,1) 82.2%, rgba(255,189,86,1) 88.2%, rgba(254,227,80,1) 92.8%, rgba(254,248,75,1) 98.4% )`;
+			elem.style.boxShadow = "0 0 12px 7px green";
+			elem.style.opacity = "0";
+		})
+	}
+
 }
 
 function resetChoosenCards() {
@@ -386,8 +436,9 @@ function resetChoosenCards() {
 }
 
 function checkForGameEnd(allCardsShuffled) {
+
 	let checkIfBoardIsClear = document.querySelectorAll("[class^='memoryCardCorrect']");
-	let checkAllCards = document.querySelectorAll("memoryCard")
+	let checkAllCards = document.querySelectorAll(".memoryCard")
 	if (checkIfBoardIsClear.length == allCardsShuffled.length && checkAllCards.length == 0) {
 		setTimeout(function () {
 			let endText = document.createElement("h1");
@@ -395,12 +446,12 @@ function checkForGameEnd(allCardsShuffled) {
 			endText.innerHTML = `Congratulations!! It took you ${score} turns!`;
 			endText.id = "endtext";
 			let memFlexBox = document.querySelector(".memoryFlexBox");
-			memFlexBox.style.padding = "2% 0% 4% 0%" ;
-			setTimeout(function(){
+			memFlexBox.style.padding = "2% 0% 4% 0%";
+			setTimeout(function () {
 				endText.style.opacity = "0.9";
 			}, 100)
 			let memoryCards = document.querySelectorAll("[class^='memoryCard']");
-			memoryCards.forEach(function(elem){
+			memoryCards.forEach(function (elem) {
 				elem.style.opacity = "0.9";
 				elem.style.transform = "rotate3d(1, 1, 1, 0deg)"
 			});

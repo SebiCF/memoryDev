@@ -1,187 +1,338 @@
+html {
+    background-color: rgba(0,0,0,0.9);
+    
+    margin: 0px;
+    padding: 0px;
+    font-family: "Abel", sans-serif;
+}
 
-.memoryContainer{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding: 4% 0% 4% 0%;
-	border-radius: 1%;
+body {
+    margin: 0;
+
+}
+
+// Header start
+
+header {
+    width: 100%;
+    background: #101010;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+    min-height: 1.5em;
+    font-weight: 600;
+    font-size: 135%;
+    letter-spacing: 1px;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.navbar a {
+  font-weight: 600;
+  font-size: 100%;
+  letter-spacing: 1px;
+  float: left;
+  color: #ffffffd1;
+  text-align: center;
+  padding: 0.6em 0.6em 0.6em 0.6em;
+  text-decoration: none;
+}
+
+.navbar a:hover{
+    color: #ffffff;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn { 
+
+  font-weight: 600;
+  font-size: 100%;
+  letter-spacing: 1px;
+  border: none;
+  outline: none;
+  color: #ffffffd1;
+  padding: 0.6em 0.6em 0.6em 0.6em;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  min-width: 112px;
+}
+.dropdown .dropbtn:hover{
+    color: #ffffff;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+  min-width: 112px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: #ffffffd1;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  
+}
+
+.dropdown-content a:hover {
+    
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+li>a:after {
+    content: ' ▼';
+    font-size: 67%
+}
+
+li>a:only-child:after {
+    content: '';
+    font-size: 67%
+}
+
+
+// Header end
+
+main {
+    margin: 2% auto;
+    max-width: 1400px;
+
+    h1{
+		text-align: center;
+        color: white;
+        letter-spacing: 1px;
+        margin: -1% 0% 1% 0%;
+	}
+
+}
+
+.memoryContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 4% 0% 4% 0%;
+    border-radius: 1%;
     background-color: rgba(27, 27, 27, 0.6) !important;
-	box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
-	
-	
-	
-	#startMemoryBtn {
-	
-		border : solid 0px #ffffff;
-		border-radius : 8px;
-		moz-border-radius : 8px;
-		-webkit-box-shadow : inset 1px 2px 9px rgba(77,67,77,1.0);
-		-moz-box-shadow : inset 1px 2px 9px rgba(77,67,77,1.0);
-		box-shadow : inset 1px 2px 9px rgba(77,67,77,1.0);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .25);
+
+    #startMemoryBtn {
+
+        border: solid 0px #ffffff;
+        border-radius: 8px;
+        moz-border-radius: 8px;
+        -webkit-box-shadow: inset 1px 2px 9px rgba(77, 67, 77, 1.0);
+        -moz-box-shadow: inset 1px 2px 9px rgba(77, 67, 77, 1.0);
+        box-shadow: inset 1px 2px 9px rgba(77, 67, 77, 1.0);
+        letter-spacing: 1px;
+        font-size: 20px;
+        color: #fbfff2;
+        margin-bottom: -2%;
+        padding: 3px 11px;
+        background: #333538;
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333538), color-stop(100%, #7f858a));
+        background: -moz-linear-gradient(top, #333538 0%, #7f858a 100%);
+        background: -webkit-linear-gradient(top, #333538 0%, #7f858a 100%);
+        background: -o-linear-gradient(top, #333538 0%, #7f858a 100%);
+        background: -ms-linear-gradient(top, #333538 0%, #7f858a 100%);
+        background: linear-gradient(top, #333538 0%, #7f858a 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333538', endColorstr='#7f858a', GradientType=0);
+
+    }
+
+    #startMemoryBtn:hover {
+        opacity: 0.9;
+    }
+
+    #memoryScore {
+
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        border-top: 2px solid gray;
+        border-right: 2px solid gray;
+        border-left: 2px solid gray;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        moz-border-radius: 8px;
+        font-size: 166%;
+        padding: 0.2% 2% 0.2% 2%;
+        background: #544e4e30;
+        align-self: center;
+        margin-top: 4%;
+        color: #ffffffbf;
+        opacity: 0;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .25);
+        visibility: hidden;
+        -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        -moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        -o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        -khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+
+    }
+
+    #cardAmountSelector {
+
+        width: 4%;
+        font-size: 130%;
+        align-self: flex-end;
+        margin-bottom: -3%;
+        margin-right: 7%;
+        border: none;
+        border-radius: 4px;
+        border-bottom: 1px solid black;
+    }
+
+    #cardAmountSelector:focus {
+        background-color: #dcd7d785;
+        border-radius: 4px;
+    }
+
+    #cardAmountSelector:hover {
+        opacity: 0.7;
+    }
+
+    #cardAmountSelector {
+       
+        font-size: 160%;
+        font-weight: 600;
+        padding: 0.5% 0.5% 0.5% 0.5%;
+        background-color: rgba(27, 27, 27, 0.9) !important;
+        color: #ffffffbf;
+		border-color: gray;
+		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+		box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2);
+		text-indent: 20%;
+		transition: all 0.5s, width 0.6s;
+		background-image: linear-gradient(-144deg, #0d0d0d, #0d0d0d, #151414);
 		letter-spacing: 1px;
-		font-size : 20px;
-		color : #fbfff2;
-		margin-bottom: -2%;
-		padding : 3px 11px;
-		background : #333538;
-		background : -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333538), color-stop(100%,#7f858a));
-		background : -moz-linear-gradient(top, #333538 0%, #7f858a 100%);
-		background : -webkit-linear-gradient(top, #333538 0%, #7f858a 100%);
-		background : -o-linear-gradient(top, #333538 0%, #7f858a 100%);
-		background : -ms-linear-gradient(top, #333538 0%, #7f858a 100%);
-		background : linear-gradient(top, #333538 0%, #7f858a 100%);
-		filter : progid:DXImageTransform.Microsoft.gradient( startColorstr='#333538', endColorstr='#7f858a',GradientType=0 );
-	
-	}
-	
-	#startMemoryBtn:hover {
-		opacity: 0.9;
-	}
-	
-	#memoryScore{
-		 
-		font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-		border-top: 2px solid gray;
-		border-right: 2px solid gray;
-		border-left: 2px solid gray;
-		border-top-left-radius: 5px;
-		border-top-right-radius: 5px;
-		moz-border-radius : 8px;
-		font-size: 166%;
-		padding: 0.2% 2% 0.2% 2%;
-		background: #544e4e30;
-		align-self: center;
-		margin-top: 4%;
-		color: #ffffffbf;
-		opacity: 0;
-		box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
-		visibility: visible;
-		-webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		-moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		-o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		-khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-	
-	}
-	
-	#cardAmountSelector{
-	
-		width: 15%;
-		font-size: 130%;
-		align-self: flex-end;
-		margin-bottom: -3%;
-		margin-right: 7%;
-		padding-bottom: 2px;
-		border: none;
-		border-radius: 4px;
-		border-bottom: 1px solid black;
+		color: #ded9d9f5;
+    }
+
+    #cardAmountSelector {
+        -webkit-appearance: textfield;
+        -moz-appearance: textfield;
+        appearance: textfield;
 	}
 	#cardAmountSelector:focus{
-		background-color: #dcd7d785;
-		border-radius: 4px;
-	}
-	#cardAmountSelector:hover{
-		opacity: 0.7;
+		text-indent: 4%;
 	}
 	
-	#cardAmountSelector {
-		height: 1.5em;
-		font-size: 170%;
-		font-weight: 600;
-    	padding: 0 8px;
-   	 	background-color: rgba(27, 27, 27, 0.9) !important;
-    	color: #ffffffbf;
-    	border-color: gray;
-	}
-	#cardAmountSelector {
-		-webkit-appearance: textfield;
-		   -moz-appearance: textfield;
-				appearance: textfield;
-	  }
-	  #cardAmountSelector::-webkit-inner-spin-button, 
-	  #cardAmountSelector::-webkit-outer-spin-button { 
-		-webkit-appearance: none;
-	  }
-	
 
-	.memoryFlexBox{
-		display: flex;
-		justify-content: center;
-		flex-wrap: wrap;
-		padding: 2.5% 0% 2% 0%;
-		opacity: 0;
-		width: 90%;
-		background: #544e4e30;
-		border-radius: 3%;
-		border: 2px solid gray;
-		box-shadow: 0 1px 2px 0 rgba(0,0,0,.25);
-		visibility: visible;
-		-webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		-moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		-o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		-khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
-		transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.6s ease-in-out;
+    #cardAmountSelector::-webkit-inner-spin-button,
+    #cardAmountSelector::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+    }
 
-		div[class^=memoryCard]{
-			width: 9vw;
+
+    .memoryFlexBox {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 2.5% 1% 2% 1%;
+        opacity: 0;
+        width: 90%;
+        background: #544e4e30;
+        border-radius: 3%;
+        border: 2px solid gray;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .25);
+        visibility: hidden;
+        -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        -moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        -o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        -khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+        transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
+
+        div[class^=memoryCard] {
+            width: 9vw;
             height: 12vw;
-			margin: 0% 0.5% 1% 0.5%;
-			border: 0.5px solid gray;
-			background-color: black;
-			background-image: url(../img/memory/ace_of_spadesWhite.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%);
-			background-size: cover;
-			background-size: 5vw, 10vw;
-			background-repeat: no-repeat;
-			background-position: center;
-			cursor: pointer;
-			border-radius: 10%;
-			transform: rotate3d(5, 5, 5, 250deg);
-			opacity: 0;
-			-webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
-			-moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
-			-o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
-			-khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
-			transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
-			
-		}
-		div[class^=memoryCard]:hover{
-			background-size: 6vw, 10vw;
-		}
+            margin: 0% 0.5% 1% 0.5%;
+            border: 0.5px solid gray;
+            background-color: black;
+            background-image: url(../img/memory/ace_of_spadesWhite.png), linear-gradient(90deg, black 0%, rgba(190, 190, 190, 0.969625350140056) 100%);
+            background-size: cover;
+            background-size: 5vw, 10vw;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            border-radius: 10%;
+            transform: rotate3d(5, 5, 5, 250deg);
+            opacity: 0.5;
+            -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
+            -moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
+            -o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
+            -khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
+            transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1.5s ease-in-out, background-position 0.7s ease-in;
 
-		div[class=memoryCardCorrect]{
-			cursor: default;
-			background-size: 6vw, 10vw;
-			-webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
-			-moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
-			-o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
-			-khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
-			transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
-		}
-		div[class=memoryCardCorrect]:hover{
-			background-size: 6vw, 10vw;
-			border: none;
-		}
+        }
+
+        div[class^=memoryCard]:hover {
+            background-size: 6vw, 10vw;
+        }
+
+        div[class=memoryCardCorrect] {
+            cursor: default;
+            background-size: 6vw, 10vw;
+            -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
+            -moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
+            -o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
+            -khtml-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
+            transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
+        }
+
+        div[class=memoryCardCorrect]:hover {
+            background-size: 6vw, 10vw;
+            border: none;
+        }
+
+    }
 
 }
 
-
-
-}
-
-
-#endtext{
+#endtext {
 
 	width: 100%;
-	color: green;
-	margin: 0% 0% 3% 0%;
-	font-weight: 600;
-	text-shadow: 1px 1px rgba(27, 27, 27, 0.9) ;
-	letter-spacing: 1px;
-	opacity: 0;
-	-webkit-transition: opacity 0.4s ease-in-out;
-	-moz-transition: opacity 0.4s ease-in-out;
-	-o-transition: opacity 0.4s ease-in-out;
-	-khtml-transition: opacity 0.4s ease-in-out;
-	transition: opacity 0.4s ease-in-out;
+	font-size: 250%;
+    color: green;
+    margin: 0% 0% 3% 0%;
+    font-weight: 600;
+    text-shadow: 1px 1px rgba(27, 27, 27, 0.9);
+    letter-spacing: 1px;
+    opacity: 0;
+    -webkit-transition: opacity 0.4s ease-in-out;
+    -moz-transition: opacity 0.4s ease-in-out;
+    -o-transition: opacity 0.4s ease-in-out;
+    -khtml-transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
+
+// Main end
+
+// Footer start
+
+// footer {
+    
+// }
+
+// Footer end
