@@ -252,7 +252,7 @@ main {
         flex-wrap: wrap;
         padding: 2.5% 1% 2% 1%;
         opacity: 0;
-        width: 90%;
+		width: 90%;
         background: #544e4e30;
         border-radius: 3%;
         border: 2px solid gray;
@@ -265,14 +265,14 @@ main {
         transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 0.4s ease-in-out;
 
         div[class^=memoryCard] {
-            width: 9vw;
-            height: 12vw;
+            width: 90px;
+            height: 130px;
             margin: 0% 0.5% 1% 0.5%;
             border: 0.5px solid gray;
             background-color: black;
             background-image: url(../img/memory/ace_of_spadesWhite.png), linear-gradient(90deg, black 0%, rgba(190, 190, 190, 0.969625350140056) 100%);
             background-size: cover;
-            background-size: 5vw, 10vw;
+            background-size: 55px, 90px;
             background-repeat: no-repeat;
             background-position: center;
             cursor: pointer;
@@ -288,12 +288,12 @@ main {
         }
 
         div[class^=memoryCard]:hover {
-            background-size: 6vw, 10vw;
+            background-size: 65px, 90px;
         }
 
         div[class=memoryCardCorrect] {
             cursor: default;
-            background-size: 6vw, 10vw;
+            background-size: 65px, 90px;
             -webkit-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
             -moz-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
             -o-transition: background-color 0.5s ease-in-out, transform 0.7s, opacity 1s ease-in-out, background-image 1s ease-in-out;
@@ -302,7 +302,7 @@ main {
         }
 
         div[class=memoryCardCorrect]:hover {
-            background-size: 6vw, 10vw;
+            background-size: 65px, 90px;
             border: none;
         }
 
