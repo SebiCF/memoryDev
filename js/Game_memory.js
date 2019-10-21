@@ -456,7 +456,7 @@ function checkForGameEnd(allCardsShuffled) {
 			endText.innerHTML = `Congratulations!! It took you ${score} turns!`;
 			endText.id = "endtext";
 			let memFlexBox = document.querySelector(".memoryFlexBox");
-			memFlexBox.style.padding = "2% 0% 4% 0%";
+			memFlexBox.style.padding = "2% 2% 4% 2%";
 			setTimeout(function () {
 				endText.style.opacity = "0.9";
 			}, 100)
