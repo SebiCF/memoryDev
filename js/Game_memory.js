@@ -342,7 +342,7 @@ function goldJokerEvent(allCardsShuffled) {
 			checkRemainingCardsArray[showOneColor].style.transform = "rotate3d(1, 1, 1, 0deg)";
 			checkRemainingCardsArray[showOneColor].style.backgroundColor = allCardsShuffled[i].color;
 			checkRemainingCardsArray[showOneColor].style.boxShadow = `0 0 12px 7px ${allCardsShuffled[i].color}`;
-			checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${allCardsShuffled[i].color} 100%)`;
+			checkRemainingCardsArray[showOneColor].style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient(90deg, black 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${allCardsShuffled[i].color} 100%)`;
 			checkRemainingCardsArray[showOneColor].style.backgroundSize = "65px, 90px, 176px";
 			checkRemainingCardsArray[showOneColor].style.backgroundPositionX = "-90px";
 			shownByJokerCardId = checkRemainingCardsArray[showOneColor].id;
@@ -350,7 +350,7 @@ function goldJokerEvent(allCardsShuffled) {
 
 			setTimeout(function () {
 				passOnColor.style.backgroundPositionX = "center";
-				passOnColor.style.backgroundImage = `url(../img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${checkRemainingCardsArray[showOneColor].style.backgroundColor} 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${checkRemainingCardsArray[showOneColor].style.backgroundColor} 100%)`;
+				passOnColor.style.backgroundImage = `url(./img/memory/ace_of_spadesGold.png), linear-gradient(90deg, ${checkRemainingCardsArray[showOneColor].style.backgroundColor} 0%, rgba(190,190,190,0.969625350140056) 100%), linear-gradient(90deg, rgba(190,190,190,0.969625350140056) 68%, ${checkRemainingCardsArray[showOneColor].style.backgroundColor} 100%)`;
 			}, 750)
 			break;
 		}
